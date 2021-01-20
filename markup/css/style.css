@@ -18,14 +18,15 @@ input[type="radio"].visually-hidden {
   padding-right: 25px; }
 
 .header {
-  width: 414px; }
+  min-width: 320px; }
 
 .header__container {
   box-sizing: border-box;
   padding-top: 25px;
   min-height: 86px;
   width: inherit;
-  display: flex; }
+  display: flex;
+  justify-content: space-between; }
 
 .header__title {
   margin: 0; }
@@ -58,8 +59,6 @@ input[type="radio"].visually-hidden {
     background-color: #000; }
   .page-nav--hidden::before {
     top: -9px; }
-  .page-nav--hidden::after {
-    bottom: -10px; }
 
 .page-nav--hidden .page-nav__item {
   display: none; }
@@ -93,8 +92,11 @@ input[type="radio"].visually-hidden {
   padding: 0; }
 
 .logo {
-  padding-top: 527px;
+  padding-top: 50vh;
   padding-bottom: 135px; }
+
+.logo svg {
+  width: 100vw; }
 
 .about-me {
   padding-top: 60px; }
@@ -182,7 +184,7 @@ input[type="radio"].visually-hidden {
 
 .contacts__mail {
   font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 125%;
   color: #000;
