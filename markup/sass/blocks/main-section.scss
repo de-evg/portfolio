@@ -1,0 +1,33 @@
+.main-section {
+  padding-top: 60px;
+}
+
+.main-section--arrow-down {
+  position: relative;  
+  &::after {
+    position: absolute;
+    content: '';
+    width: 12px;
+    height: 20px;
+    bottom: 69px;
+    left: 19px;
+    background-image: url("../../img/arrow-down.png");
+    background-repeat: no-repeat;
+  }
+}
+
+.main-section__title {
+  margin: 0;
+  margin-bottom: 30px;
+
+  font-family: $montserrat;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 125%;
+  text-transform: uppercase;
+}
+
+.main-section__content {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,44 @@
+.works {
+  padding-top: 60px;
+}
+
+.works-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 7px;
+  padding-bottom: 191px;
+
+  list-style: none;
+}
+
+.works-list__item {
+  margin-bottom: 62px;
+}
+
+.works-list__item a:first-of-type {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.works-list__item-link {
+  position: relative;
+  padding-right: 20px;
+  font-family: $montserrat;
+  font-size: $large;
+  font-weight: 700;
+  color: #000;
+  
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 12px;
+    top: 5px;
+    right: -11px;
+    background-image: url("../../img/arrow-right.png");
+    background-repeat: no-repeat;
+  }
+}

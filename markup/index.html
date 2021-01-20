@@ -3,91 +3,163 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/normolize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Pixel Glass -->
+    <style>
+      HTML {
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        /* Mobile layout by default */
+        background-image: url("./pixel-glass/imgs/mobile.png");
+      }
+      /* Desktop */
+      @media (min-width: 960px) {
+        HTML {
+          /* Desktop layout */
+          background-image: url("./pixel-glass/imgs/desctop_1920.png");
+        }
+      }
+    </style>
+    <link href="./pixel-glass/styles.css" rel="stylesheet" />
+    <script src="./pixel-glass/script.js"></script>
+    <!-- // Pixel Glass -->
     <title>Developer</title>
   </head>
   <body>
     <header class="header">
-      <h1 class="page-title">Portfolio of Denis Minaev</h1>
-      <nav class="page-nav">
-        <a class="page-nav__item" href="#">About me</a>
-        <a class="page-nav__item" href="#">Services</a>
-        <a class="page-nav__item" href="#">Works</a>
-        <a class="page-nav__item" href="#">Contacts</a>
-      </nav>
+      <div class="wrapper header__container">
+        <h1 class="header__title page-title">Portfolio of Denis Minaev</h1>
+        <nav class="header__nav page-nav page-nav--hidden">
+          <a class="page-nav__item" href="#">About me</a>
+          <a class="page-nav__item" href="#">Services</a>
+          <a class="page-nav__item" href="#">Works</a>
+          <a class="page-nav__item" href="#">Contacts</a>
+        </nav>
+      </div>
     </header>
     <main>
+      <section class="main-section main-section--arrow-down logo">
+        <svg
+          class="main-section__logo"
+          width="414"
+          height="75"
+          viewBox="0 0 414 75"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 59.4551H25.2745C43.4753 59.4551 55.9535 48.3974 55.9535 31.4103C55.9535 14.4231 43.4753 3.36538 25.2745 3.36538H0V59.4551ZM12.8757 48.7981V14.0224H24.6386C35.6863 14.0224 42.9189 20.6731 42.9189 31.4103C42.9189 42.1474 35.6863 48.7981 24.6386 48.7981H12.8757Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M106.278 38.0609C106.278 24.1987 96.5812 15.7051 84.0234 15.7051C70.9888 15.7051 61.2128 25 61.2128 37.9006C61.2128 50.7212 70.8298 60.0962 85.613 60.0962C93.3225 60.0962 99.2835 57.6923 103.257 53.125L96.6607 45.9135C93.7199 48.718 90.4613 50.0801 85.9309 50.0801C79.4136 50.0801 74.8833 46.7949 73.6911 41.4263H106.039C106.119 40.3846 106.278 39.0224 106.278 38.0609ZM84.1029 25.1603C89.6665 25.1603 93.7199 28.6859 94.5942 34.1346H73.5321C74.4064 28.6058 78.4599 25.1603 84.1029 25.1603Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M143.879 16.3462L131.639 45.6731L119.797 16.3462H107L124.963 59.4551H137.759L155.801 16.3462H143.879Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M201.184 38.0609C201.184 24.1987 191.488 15.7051 178.93 15.7051C165.895 15.7051 156.119 25 156.119 37.9006C156.119 50.7212 165.736 60.0962 180.52 60.0962C188.229 60.0962 194.19 57.6923 198.164 53.125L191.567 45.9135C188.626 48.718 185.368 50.0801 180.837 50.0801C174.32 50.0801 169.79 46.7949 168.598 41.4263H200.946C201.025 40.3846 201.184 39.0224 201.184 38.0609ZM179.009 25.1603C184.573 25.1603 188.626 28.6859 189.501 34.1346H168.439C169.313 28.6058 173.366 25.1603 179.009 25.1603Z"
+            fill="#1E1E1E"
+          />
+          <path d="M209.041 59.4551H221.44V0H209.041V59.4551Z" fill="#1E1E1E" />
+          <path
+            d="M252.897 60.0962C266.488 60.0962 276.343 50.8814 276.343 37.9006C276.343 24.9199 266.488 15.7051 252.897 15.7051C239.306 15.7051 229.371 24.9199 229.371 37.9006C229.371 50.8814 239.306 60.0962 252.897 60.0962ZM252.897 49.8397C246.697 49.8397 241.929 45.3526 241.929 37.9006C241.929 30.4487 246.697 25.9615 252.897 25.9615C259.096 25.9615 263.785 30.4487 263.785 37.9006C263.785 45.3526 259.096 49.8397 252.897 49.8397Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M309.508 15.7051C303.785 15.7051 299.176 17.5481 296.076 21.3141V16.3462H284.233V75H296.632V54.8878C299.811 58.4135 304.183 60.0962 309.508 60.0962C321.509 60.0962 330.808 51.4423 330.808 37.9006C330.808 24.359 321.509 15.7051 309.508 15.7051ZM307.362 49.8397C301.163 49.8397 296.473 45.3526 296.473 37.9006C296.473 30.4487 301.163 25.9615 307.362 25.9615C313.561 25.9615 318.251 30.4487 318.251 37.9006C318.251 45.3526 313.561 49.8397 307.362 49.8397Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M380.597 38.0609C380.597 24.1987 370.9 15.7051 358.342 15.7051C345.308 15.7051 335.532 25 335.532 37.9006C335.532 50.7212 345.149 60.0962 359.932 60.0962C367.641 60.0962 373.602 57.6923 377.576 53.125L370.98 45.9135C368.039 48.718 364.78 50.0801 360.25 50.0801C353.733 50.0801 349.202 46.7949 348.01 41.4263H380.358C380.438 40.3846 380.597 39.0224 380.597 38.0609ZM358.422 25.1603C363.985 25.1603 368.039 28.6859 368.913 34.1346H347.851C348.725 28.6058 352.779 25.1603 358.422 25.1603Z"
+            fill="#1E1E1E"
+          />
+          <path
+            d="M400.296 22.0353V16.3462H388.454V59.4551H400.853V39.1026C400.853 30.8494 405.383 27.0833 412.218 27.0833C413.172 27.0833 413.967 27.1635 415 27.2436V15.7051C408.403 15.7051 403.317 17.8686 400.296 22.0353Z"
+            fill="#1E1E1E"
+          />
+        </svg>
+      </section>
       <section class="main-section about-me">
-        <h2 class="main-section__title">About me</h2>
-        <p class="main-section__content about__content">Text content</p>
+        <div class="wrapper">
+          <h2 class="main-section__title">About me</h2>
+          <p class="main-section__content about__content">
+            А вот тут ты опишешь какой ты у меня красивый, умный, рукастый и
+            вообще замечательный мужчина в самом расцвете лет на английском и не
+            забыв про неразрывные предлоги!)
+          </p>
+          <p class="main-section__content about__content">
+            А вот тут ты опишешь какой ты у меня красивый, умный, рукастый и
+            вообще замечательный мужчина в самом расцвете лет на английском и не
+            забыв про неразрывные предлоги!)
+          </p>
+        </div>
       </section>
       <section class="main-section services">
-        <h2 class="main-section__title">Services</h2>
-        <p class="main-section__content services__content">
-          services I CAN HELP YOU WITH
-        </p>
-        <p class="main-section__content services__content">
-          FRONTEND DEVELOPING. UI. HTML. CSS. SCSS. LESS. WEBPACK. GULP. JAVA
-          SCRIPT. REACT. REDUX.
-        </p>
+        <div class="wrapper">
+          <h2 class="main-section__title">Services</h2>
+          <p class="main-section__content services__content">
+            services I CAN HELP YOU WITH
+          </p>
+          <ul class="services__skill-list">
+            <li class="services__skill-item">FRONTEND DEVELOPING.</li>
+            <li class="services__skill-item">HTML.</li>
+            <li class="services__skill-item">CSS.</li>
+            <li class="services__skill-item">SCSS.</li>
+            <li class="services__skill-item">LESS.</li>
+            <li class="services__skill-item">WEBPACK.</li>
+            <li class="services__skill-item">GULP.</li>
+            <li class="services__skill-item">JAVA SCRIPT.</li>
+            <li class="services__skill-item">REACT.</li>
+            <li class="services__skill-item">REDUX.</li>
+          </ul>
+        </div>
       </section>
       <section class="main-section works">
-        <h2 class="main-section__title">Services</h2>
-        <ul class="main-section__list works-list">
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-          <li class="main-section__list-item works-list__item">
-            <a href="#"
-              ><img src="#" width="364" height="378" alt="Превью сайта"
-            /></a>
-            <a href="#">Battleship. The game</a>
-          </li>
-        </ul>
+        <div class="wrapper">
+          <h2 class="main-section__title">Works</h2>
+          <ul class="main-section__list works-list">
+            <li class="main-section__list-item works-list__item">
+              <a href="#"
+                ><img src="./img//work-img.png" width="364" height="378" alt="Превью сайта"
+              /></a>
+              <a class="works-list__item-link" href="#">Battleship. The game</a>
+            </li>
+            <li class="main-section__list-item works-list__item">
+              <a href="#"
+                ><img src="./img//work-img.png" width="364" height="378" alt="Превью сайта"
+              /></a>
+              <a class="works-list__item-link" href="#">Battleship. The game</a>
+            </li>
+            <li class="main-section__list-item works-list__item">
+              <a href="#"
+                ><img src="./img//work-img.png" width="364" height="378" alt="Превью сайта"
+              /></a>
+              <a class="works-list__item-link" href="#">Battleship. The game</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="main-section contacts">
+        <h2 class="main-section__title visually-hidden">Contacts</h2>
+        <div class="wrapper contacts__container">
+          <p class="contacts__content">Get in touch</p>
+          <a class="contacts__mail" href="#">D.E.MIN@YANDEX.RU</a>
+        </div>
       </section>
     </main>
-    <footer class="page-footer">
-      <h2 class="page-footer__title">Portfolio of Denis Minaev</h2>
-      <nav class="page-nav page-footer__section">
-        <a class="page-nav__item" href="#">About me</a>
-        <a class="page-nav__item" href="#">Services</a>
-        <a class="page-nav__item" href="#">Works</a>
-        <a class="page-nav__item" href="#">Contacts</a>
-      </nav>
-      <div class="page-footer__section contacts">
-        <p>Get in touch</p>
-        <a href="#">D.E.MIN@YANDEX.RU</a>
-      </div>
-      <div class="page-footer__section"> 
-        <a class="link-to-top" href="#">Back to top</a>
-        <p class="year">© 2021</p>
+    <foote class="page-footer">
+      <div class="wrapper page-footer__container">
+        <a class="page-footer__link-to-top" href="#">Back to top</a>
+        <p class="page-footer__year">© 2021</p>
       </div>
     </footer>
   </body>

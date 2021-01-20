@@ -1,0 +1,26 @@
+.contacts__container {
+  padding-top: 146px;
+  padding-bottom: 342px;
+}
+
+.contacts__content {
+  margin: 0;
+  margin-bottom: 25px;
+  font-family: $montserrat;
+  font-size: $default;
+  font-weight: 500;
+  line-height: 125%;
+
+  text-transform: uppercase;
+}
+
+.contacts__mail {
+  font-family: $montserrat;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 125%;  
+  color: #000;
+
+  text-transform: uppercase;  
+  text-decoration: none;
+}

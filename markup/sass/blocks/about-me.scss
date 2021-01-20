@@ -1,0 +1,16 @@
+.about-me {
+  padding-top: 60px;
+}
+
+.about__content {
+  margin: 0;
+  font-family: $montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 132%;  
+  letter-spacing: -0.2px;
+}
+
+.about-me .about__content:last-of-type {
+  padding-bottom: 12px;
+}

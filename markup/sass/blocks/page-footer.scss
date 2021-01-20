@@ -1,0 +1,19 @@
+.page-footer__container {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-footer__link-to-top,
+.page-footer__year {
+  margin: 0;
+  padding: 0;
+
+  color: #000;
+  font-family: $montserrat;
+  font-size: $default;  
+}
+
+.page-footer__link-to-top {
+  text-decoration: none;
+}

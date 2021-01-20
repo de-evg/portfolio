@@ -1,0 +1,19 @@
+.header {    
+  width: $mobileDeviceWidth;
+}
+
+.header__container {
+  box-sizing: border-box;
+  padding-top: 25px;  
+  min-height: 86px;
+  width: inherit;
+  display: flex;  
+}
+
+.header__title {  
+  margin: 0;  
+}
+
+.header__nav {
+  margin-left: auto;
+}

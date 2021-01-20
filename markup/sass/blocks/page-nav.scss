@@ -1,0 +1,32 @@
+.page-nav {
+  box-sizing: border-box;
+}
+
+.page-nav--hidden {
+  margin-top: 10px;  
+  position: relative;
+  width: 40px;
+  height: 4px;
+  background-color: #000;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+  }
+
+  &::before {
+    top: -9px;
+  }
+
+  &::after {
+    bottom: -10px;
+  }
+}
+
+.page-nav--hidden .page-nav__item {
+  display: none;
+}

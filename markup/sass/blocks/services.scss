@@ -1,0 +1,24 @@
+.services__content {
+  font-family: $montserrat;
+  font-size: $default;
+  font-weight: 500;
+  line-height: 130%;
+  text-transform: uppercase;
+}
+
+.services__skill-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
+  padding-bottom: 20px;
+
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  font-family: $montserrat;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 127%;
+  text-transform: uppercase;
+}
