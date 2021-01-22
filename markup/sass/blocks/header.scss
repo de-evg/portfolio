@@ -1,5 +1,7 @@
 .header {    
   min-width: $mobileDeviceWidth;
+  min-height: 86px;
+  flex-shrink: 1;
 }
 
 .header__container {
@@ -17,4 +19,19 @@
 
 .header__nav {
   margin-left: auto;
+}
+
+@media (min-width: 960px) {
+  .header {    
+    margin: 0 auto;    
+  }
+
+  .header__container {
+    margin: 0 auto;    
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 73px;  
+    width: 1520px;
+    min-height: 160px;
+  }
 }

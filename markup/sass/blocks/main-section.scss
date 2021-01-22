@@ -1,19 +1,6 @@
 .main-section {
   padding-top: 60px;
-}
-
-.main-section--arrow-down {
-  position: relative;  
-  &::after {
-    position: absolute;
-    content: '';
-    width: 12px;
-    height: 20px;
-    bottom: 69px;
-    left: 19px;
-    background-image: url("../../img/arrow-down.png");
-    background-repeat: no-repeat;
-  }
+  flex-grow: 1;
 }
 
 .main-section__title {
@@ -30,4 +17,14 @@
 .main-section__content {
   margin: 0;
   padding: 0;
+}
+
+@media (min-width: $desctopDeviceWidth) {
+  .main-section__title {
+    font-size: 25px;
+
+    position: relative;
+    top: -205px;
+    left: 290px;
+  }
 }

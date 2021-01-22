@@ -1,8 +1,55 @@
 .logo {
-  padding-top: 50vh;
-  padding-bottom: 135px;
+  min-height: 100px;
+  padding-top: 50vh;  
 }
 
-.logo svg {
-  width: 100vw;
+.logo__img {  
+  overflow: hidden;
+}
+
+.logo__img svg {
+  position: relative;
+  left: -1px;
+  width: 100vw;  
+}
+
+.logo--arrow-down {
+  position: relative;  
+  &::after {
+    position: absolute;
+    content: '';
+    width: 12px;
+    height: 20px;
+    bottom: 53px;
+    left: 19px;
+    background-image: url("../../img/arrow-down.png");
+    background-repeat: no-repeat;
+  }
+}
+
+@media (min-width: $desctopDeviceWidth) {
+  .logo {
+    padding-top: 33vh;    
+  }
+
+  .logo__img svg {
+    position: relative;    
+    left: -10px;
+    width: calc(100vw + 10px);  
+  }
+
+  .logo--arrow-down {
+    position: relative;  
+    &::after {
+      position: absolute;
+      content: '';
+      width: 15px;
+      height: 20px;
+      bottom: -10px;
+      left: 73px;
+      background-image: url("../../img/arrow-down-desctop.png");
+      background-repeat: no-repeat;
+    }
+  }
+
 }

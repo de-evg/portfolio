@@ -7,3 +7,19 @@
 
   width: 145px;
 }
+
+@media (min-width: $maxMobileDeviceWidth) {
+  .page-title {
+    min-width: 180px;
+    font-size: $default;
+    line-height: 125%;
+  }
+}
+
+@media (min-width: $desctopDeviceWidth) {
+  .page-title {
+    min-width: 215px;
+    font-size: 25px;
+    line-height: 140%;
+  }
+}

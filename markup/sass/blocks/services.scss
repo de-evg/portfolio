@@ -1,4 +1,6 @@
+
 .services__content {
+  margin-bottom: 30px;
   font-family: $montserrat;
   font-size: $default;
   font-weight: 500;
@@ -9,9 +11,7 @@
 .services__skill-list {
   margin: 0;
   padding: 0;
-  padding-top: 30px;
-  padding-bottom: 20px;
-
+  
   list-style: none;
 
   display: flex;
@@ -21,4 +21,28 @@
   font-weight: 700;
   line-height: 127%;
   text-transform: uppercase;
+}
+
+@media (min-width: $desctopDeviceWidth) {
+  .services {
+    padding-top: 60px;
+  }
+
+  .services__container {
+    padding-top: 70px;
+    padding-left: 415px;
+  }
+
+  .services__content {
+    margin-bottom: 24px;
+    font-size: 25px;
+  }
+
+  .services__skill-list {
+    font-size: 60px;
+  }
+
+  .services__skill-item {
+    line-height: 130%;
+  }
 }

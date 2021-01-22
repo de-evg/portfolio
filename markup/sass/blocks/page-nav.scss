@@ -1,12 +1,7 @@
 .page-nav {
   box-sizing: border-box;
-}
-
-.page-nav--hidden {
   margin-top: 10px;  
   position: relative;
-  width: 40px;
-  height: 4px;
   background-color: #000;
 
   &::before,
@@ -16,13 +11,77 @@
     width: 40px;
     height: 4px;
     background-color: #000;
+    right: 0px;
+  }
+ 
+  &::before {
+    top: -8px;
   }
 
-  &::before {
-    top: -9px;
+  &::after {
+    top: 1px; 
   }
 }
 
-.page-nav--hidden .page-nav__item {
+.page-nav--hidden {
+  &::before {
+    top: -8px;
+    transform: rotate(-45deg);
+  }
+  &::after {
+    top: 1px;
+    transform: rotate(45deg);
+  }
+}
+
+.page-nav--show {
+  &::before {
+    top: -3px;
+    transform: rotate(45deg);
+  }
+  &::after {
+    top: -3px;
+    transform: rotate(-45deg);
+  }
+}
+
+.page-nav__item {
   display: none;
+}
+
+@media (min-width: $desctopDeviceWidth) {
+  .page-nav {
+    margin-top: 16px;  
+
+    &::before,
+    &::after {
+      width: 60px;
+      height: 5px;
+      right: 0;
+    }
+
+    &::after {
+      top: 2px;
+    }
+  }
+
+  .page-nav--hidden {
+    &::before {      
+      transform: rotate(-45deg);
+    }
+    &::after {
+      top: 2px;
+      transform: rotate(45deg);
+    }
+  }
+  
+  .page-nav--show {
+    &::before {      
+      transform: rotate(45deg);
+    }
+    &::after {
+      top: -3px;
+      transform: rotate(-45deg);
+    }
+  }
 }
