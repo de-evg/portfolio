@@ -29,7 +29,8 @@
 
 @media (min-width: $desctopDeviceWidth) {
   .logo {
-    padding-top: 33vh;    
+    padding-top: 24vh;   
+    min-height: calc(100vh - 160px) ; 
   }
 
   .logo__img svg {
@@ -45,7 +46,7 @@
       content: '';
       width: 15px;
       height: 20px;
-      bottom: -10px;
+      bottom: 0;
       left: 73px;
       background-image: url("../../img/arrow-down-desctop.png");
       background-repeat: no-repeat;

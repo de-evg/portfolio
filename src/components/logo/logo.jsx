@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="logo--arrow-down logo">
+    <div className="logo--arrow-down logo" style={{outline: "1px solid #000"}}>
       <div className="logo__img">
         <svg
           width="1931"

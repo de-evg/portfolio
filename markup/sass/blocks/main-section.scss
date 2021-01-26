@@ -6,12 +6,14 @@
 .main-section__title {
   margin: 0;
   margin-bottom: 30px;
+  display: inline;
 
   font-family: $montserrat;
   font-size: 20px;
   font-weight: 700;
   line-height: 125%;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .main-section__content {
@@ -24,7 +26,7 @@
     font-size: 25px;
 
     position: relative;
-    top: -205px;
+    top: 0;
     left: 290px;
   }
 }
