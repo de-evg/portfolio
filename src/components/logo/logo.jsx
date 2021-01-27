@@ -1,8 +1,10 @@
 import React from "react";
+import { useSpring, animated } from "react-spring";
 
 const Logo = () => {
+  const props = useSpring({to: {opacity: 1}, from: {opacity: 0}});
   return (
-    <div className="logo--arrow-down logo" style={{outline: "1px solid #000"}}>
+    <animated.div style={props} className="logo--arrow-down logo">
       <div className="logo__img">
         <svg
           width="1931"
@@ -49,7 +51,7 @@ const Logo = () => {
           />
         </svg>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

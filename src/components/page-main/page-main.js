@@ -1,64 +1,65 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import AboutMe from "../about-me/about-me";
 import Contacts from "../contacts/contacts";
 import Logo from "../logo/logo";
 import Services from "../services/services";
 import Works from "../works/wokrs";
-import { Controller, Scene } from "react-scrollmagic";
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
 const PageMain = () => {
-  const scene = {
-    pin: true,
-    triggerHook: 0,
-    reverse: true,
-  };
-
-  const [scrollDirection, setDirection] = useState(false);
-  const [lastScrollCoord, setScrollCoord] = useState(false);
-
-  const handleScroll = (evt) => {
-    const currentScrollCoord = evt.target.scrollY;
-    const isDirectionChanged = currentScrollCoord < lastScrollCoord;
-    setScrollCoord(currentScrollCoord);
-    isDirectionChanged && setDirection(isDirectionChanged);
-  }
-
-  useEffect(() => {
-    document.addEventListener('scroll', handleScroll, true);
-    return document.removeEventListener('scroll', handleScroll);
-  })
-  
+  let parallax;
   return (
-    <>
+    <>    
       <main>
-        <Controller>
-          <Scene {...scene} duration={100} pushFollowers={true}>
-            <section className="main-section" id={"logo"}>
+        <Parallax pages={5} scrolling={false} ref={(ref) => (parallax = ref)}>
+          <ParallaxLayer offset={0} speed={1}>
+            <section
+              className="main-section"
+              id={"logo"}
+              onClick={() => parallax.scrollTo(1)}
+            >
               <Logo />
             </section>
-          </Scene>
-          <Scene {...scene}  duration={1000} pushFollowers={true}>
+          </ParallaxLayer>
+
+          <ParallaxLayer
+            offset={1}
+            speed={1}            
+            onClick={() => parallax.scrollTo(2)}
+          >
             <section className="main-section">
               <AboutMe />
             </section>
-          </Scene>
-          <Scene {...scene}  duration={1000} pushFollowers={false}>
+          </ParallaxLayer>
+
+          <ParallaxLayer
+            offset={2}
+            speed={1}
+            onClick={() => parallax.scrollTo(3)}
+          >
             <section className="main-section">
               <Services />
             </section>
-          </Scene>
-          <Scene {...scene}  duration={1000} pushFollowers={false}>
+          </ParallaxLayer>
+
+          <ParallaxLayer              
+            factor={5000}      
+            offset={3}
+            speed={1}
+            onClick={() => parallax.scrollTo(4)}
+          >
             <section className="main-section">
               <Works />
             </section>
-          </Scene>
-          <Scene {...scene}  duration={50} pushFollowers={false}>
+          </ParallaxLayer>
+
+          <ParallaxLayer offset={4} speed={1} onClick={() => parallax.scrollTo(0)}>
             <section className="main-section">
               <Contacts />
-            </section>
-          </Scene>
-        </Controller>
-      </main>      
+            </section>            
+          </ParallaxLayer>          
+        </Parallax>        
+      </main>
     </>
   );
 };
