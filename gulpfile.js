@@ -12,7 +12,7 @@ var del = require("del");
 
  
 gulp.task("clean", () => {
-  return del("markup/build");
+  return del("public/css");
 });
 
 gulp.task("copy", () => {
@@ -33,7 +33,7 @@ gulp.task("css", () => {
       autoprefixer()
     ]))
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("markup/css"));
+    .pipe(gulp.dest("public/css"));
 });
 
 gulp.task("build", gulp.series(

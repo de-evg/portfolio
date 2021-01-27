@@ -41,7 +41,7 @@ input[type="radio"].visually-hidden {
   box-sizing: border-box;
   padding-top: 25px;
   min-height: 86px;
-  width: inherit;
+  width: 960px;
   display: flex;
   justify-content: space-between; }
 
