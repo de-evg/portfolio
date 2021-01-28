@@ -1,5 +1,6 @@
 import React from "react";
 import AboutMe from "../about-me/about-me";
+import PageHeader from "../page-header/page-header";
 import Contacts from "../contacts/contacts";
 import Logo from "../logo/logo";
 import Services from "../services/services";
@@ -7,34 +8,30 @@ import Works from "../works/wokrs";
 
 const PageMain = () => {
   return (
-    <>
+    <div className="body-grid">
+      <PageHeader />
       <main>
-        <section
-          className="main-section"
-        >
+        <div className="main-section">
           <Logo />
-        </section>
+        </div>
 
-
-
-        <section className="main-section">
+        <div className="main-section">
           <AboutMe />
-        </section>
+        </div>
 
-        <section className="main-section">
+        <div className="main-section">
           <Services />
-        </section>
+        </div>
 
-
-        <section className="main-section">
+        <div className="main-section">
           <Works />
-        </section>
+        </div>
 
-        <section className="main-section">
+        <div className="main-section">
           <Contacts />
-        </section>
+        </div>
       </main>
-    </>
+    </div>
   );
 };
 

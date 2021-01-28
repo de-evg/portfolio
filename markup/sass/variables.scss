@@ -1,7 +1,10 @@
 //Device width
 $mobileDeviceWidth: 320px;
-$maxMobileDeviceWidth: 414px;
-$desctopDeviceWidth: 960px;
+$maxMobileDeviceWidth: 480px;
+$minTabletDeviceWidth: 600px;
+$maxTabletDeviceWidth: 768px;
+$netBooksWidth: 1024px;
+$minDesctopDeviceWidth: 1280px;
 
 //Fonts
 $montserrat: "Montserrat", "Arial", sans-serif;

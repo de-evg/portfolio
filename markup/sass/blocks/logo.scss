@@ -27,7 +27,7 @@
   }
 }
 
-@media (min-width: $desctopDeviceWidth) {
+@media (min-width: $netBooksWidth) {
   .logo {
     padding-top: 24vh;   
     min-height: calc(100vh - 160px) ; 

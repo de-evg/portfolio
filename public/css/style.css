@@ -48,10 +48,20 @@ input[type="radio"].visually-hidden {
 .header__title {
   margin: 0; }
 
+.header__current-section {
+  margin: 0;
+  margin-bottom: 30px;
+  display: inline;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 125%;
+  text-transform: uppercase; }
+
 .header__nav {
   margin-left: auto; }
 
-@media (min-width: 960px) {
+@media (min-width: 480px) {
   .header {
     width: 100%; }
   .header__container {
@@ -59,8 +69,29 @@ input[type="radio"].visually-hidden {
     padding-left: 0;
     padding-right: 0;
     padding-top: 73px;
-    width: 960px;
+    width: 480px;
     min-height: 160px; } }
+
+@media (min-width: 600px) {
+  .header__container {
+    width: 600px; } }
+
+@media (min-width: 768px) {
+  .header__container {
+    width: 768px; } }
+
+@media (min-width: 1024px) {
+  .header__container {
+    width: 1024px; }
+  .header__current-section {
+    font-size: 25px;
+    position: relative;
+    top: 17px;
+    left: 83px; } }
+
+@media (min-width: 1280px) {
+  .header__container {
+    width: 1280px; } }
 
 main {
   flex-grow: 1; }
@@ -73,13 +104,13 @@ main {
   text-transform: uppercase;
   width: 145px; }
 
-@media (min-width: 414px) {
+@media (min-width: 480px) {
   .page-title {
     min-width: 180px;
     font-size: 16px;
     line-height: 125%; } }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .page-title {
     min-width: 215px;
     font-size: 25px;
@@ -121,7 +152,7 @@ main {
 .page-nav__item {
   display: none; }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .page-nav {
     margin-top: 16px; }
     .page-nav::before, .page-nav::after {
@@ -160,7 +191,7 @@ main {
   margin: 0;
   padding: 0; }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .main-section__title {
     font-size: 25px;
     position: relative;
@@ -191,7 +222,7 @@ main {
     background-image: url("../../img/arrow-down.png");
     background-repeat: no-repeat; }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .logo {
     padding-top: 24vh;
     min-height: calc(100vh - 160px); }
@@ -225,7 +256,7 @@ main {
 .about-me .about__content:last-of-type {
   padding-bottom: 12px; }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .about-me__container {
     padding-top: 130px;
     padding-right: 30px;
@@ -256,7 +287,7 @@ main {
   line-height: 127%;
   text-transform: uppercase; }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .services {
     padding-top: 60px; }
   .services__container {
@@ -306,12 +337,12 @@ main {
     background-image: url("../../img/arrow-right.png");
     background-repeat: no-repeat; }
 
-@media (min-width: 414px) {
+@media (min-width: 480px) {
   .works-list__item img {
     width: 364px;
     height: 378px; } }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .works-list {
     display: flex;
     flex-direction: column;

@@ -16,12 +16,8 @@ gulp.task("clean", () => {
 });
 
 gulp.task("copy", () => {
-  return gulp.src([    
-    "markup/pixel-glass/**"
-    ], {
-      base: "source"
-    })
-  .pipe(gulp.dest("markup/build"));
+  return gulp.src("markup/css/normolize.css")
+  .pipe(gulp.dest("public/css"));
 });
 
 gulp.task("css", () => {
