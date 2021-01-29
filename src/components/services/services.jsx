@@ -5,6 +5,7 @@ import "intersection-observer";
 import { useIsVisible } from "react-is-visible";
 import { connect } from "react-redux";
 import { Controller, Scene } from "react-scrollmagic";
+import { isMobile } from "react-device-detect";
 
 const Services = ({ updateSectionName }) => {
   const nodeRef = useRef();
@@ -22,6 +23,7 @@ const Services = ({ updateSectionName }) => {
   return (
     <div className="services" ref={nodeRef} style={{ paddingBottom: "100px" }}>
       <div className="wrapper">
+        {isMobile && <h2 className="main-section__title">Services</h2>}
         <div className="services__container">
           <Controller>
             <Scene duration={700} pin>
@@ -29,7 +31,7 @@ const Services = ({ updateSectionName }) => {
                 services I CAN HELP YOU WITH
               </p>
             </Scene>
-            <Scene duration={400} pin>
+            <Scene duration={400}>
               <ul className="services__skill-list">
                 <li className="services__skill-item">FRONTEND DEVELOPING.</li>
                 <li className="services__skill-item">HTML.</li>
