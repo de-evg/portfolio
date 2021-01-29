@@ -8,6 +8,21 @@
   z-index: 1;
 }
 
+.header--nav-show {
+  background-color: #000;
+}
+
+.header--nav-show .header__title{
+  color: #fff;
+}
+
+.header--nav-show button {
+  &::before,
+  &::after {
+    background-color: #fff;
+  }  
+}
+
 .header__container {
   box-sizing: border-box;
   padding-top: 25px;  

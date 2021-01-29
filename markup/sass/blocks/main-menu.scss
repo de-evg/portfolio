@@ -1,0 +1,30 @@
+.main-menu {
+  display: none;
+}
+
+.main-menu--show {
+  padding-top: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-image: url("../img/developer-menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 101vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main-menu__item {
+  display: none;
+  text-decoration: none;
+}
+
+.main-menu--show .main-menu__item {
+  display: inline;
+  color: #fff;
+}

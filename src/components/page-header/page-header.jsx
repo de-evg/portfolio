@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {NameSpace} from "../../store/reducers/root";
-import {Section} from "../../const";
+import { connect } from "react-redux";
+import { NameSpace } from "../../store/reducers/root";
+import { Section } from "../../const";
+import { isMobile } from "react-device-detect";
+import {ActionCreator} from "../../store/action";
 
-const PageHeader = ({currentSection}) => {
+const PageHeader = ({ currentSection, changeMainMenuView }) => {
+  const [isShowed, setShowed] = useState(false);
+  const showClassToggle = isShowed ? "header--nav-show" : null;
+  const btnShowClassToggle = isShowed ? "page-nav--show" : null;
+  const handleClick = useCallback(() => {
+    setShowed(!isShowed);
+    changeMainMenuView();
+  }, [setShowed, isShowed, changeMainMenuView]);
+
   return (
-    <header className="header">
+    <header className={`header ${showClassToggle}`}>
       <div className="wrapper header__container">
         <h1 className="header__title page-title">Portfolio of Denis Minaev</h1>
-        <h2 className="header__current-section">{Section[currentSection]}</h2>
-        <nav className="header__nav page-nav">
-          <a className="page-nav__item" href="#">
-            About me
-          </a>
-          <a className="page-nav__item" href="#">
-            Services
-          </a>
-          <a className="page-nav__item" href="#">
-            Works
-          </a>
-          <a className="page-nav__item" href="#">
-            Contacts
-          </a>
-        </nav>
+        {!isMobile && (
+          <h2 className="header__current-section">{Section[currentSection]}</h2>
+        )}
+        <button onClick={handleClick} className={`header__nav page-nav ${btnShowClassToggle}`} />        
       </div>
     </header>
   );
 };
 
 PageHeader.propTypes = {
-  currentSection: PropTypes.string.isRequired
-}
+  currentSection: PropTypes.string.isRequired,
+  changeMainMenuView: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
-  currentSection: state[NameSpace.HEADER].currentSection 
+  currentSection: state[NameSpace.HEADER].currentSection,  
 });
 
-export default connect(mapStateToProps)(PageHeader);
+const mapDispatchToProps = (dispatch) => ({
+  changeMainMenuView() {
+    dispatch(ActionCreator.changeMainMenu())
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageHeader);
