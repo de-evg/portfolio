@@ -3,16 +3,22 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-const Logo = ({updateSectionName, isMenuShowed}) => {
+const Logo = ({updateSectionName, isMenuShowed, changeLogoPosition}) => {
   const nodeRef = useRef();
 
   const svgStroke = isMenuShowed ? "#595959": "#1E1E1E";
   const svgFill = isMenuShowed ? "": "#1E1E1E";
+  useEffect(()=> {
+    const domRect = nodeRef.current.getBoundingClientRect();
+    const {top, left} = domRect;
+    changeLogoPosition({top, left});
+  })
   return (
     <div className="logo--arrow-down logo">
-      <div className="logo__img" ref={nodeRef}>
+      <div className="logo__img" >
         <svg
-          style={{zIndex: isMenuShowed ? 2 : 0}}
+          ref={nodeRef}
+          style={{zIndex: isMenuShowed ? 2 : "unset"}}
           width="1931"
           height="346"
           viewBox="0 0 414 76"
@@ -72,12 +78,16 @@ const Logo = ({updateSectionName, isMenuShowed}) => {
 
 Logo.propTypes = {
   updateSectionName: PropTypes.func.isRequired,
-  isMenuShowed: PropTypes.bool.isRequired
+  isMenuShowed: PropTypes.bool.isRequired,
+  changeLogoPosition: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
   updateSectionName(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName))
+  },
+  changeLogoPosition(coord) {
+    dispatch(ActionCreator.changeLogoPosition(coord))
   }
 });
 

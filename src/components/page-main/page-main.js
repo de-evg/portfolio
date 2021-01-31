@@ -11,9 +11,16 @@ import {NameSpace} from "../../store/reducers/root";
 import MainMenu from "../main-menu/main-menu";
 
 const PageMain = ({ isMenuOpen }) => {
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }    
+  }, [isMenuOpen]);
   return (
     <>
-      <div className="body-grid" style={{overflow: isMenuOpen ? "hidden" : "unset"}}>
+      <div className="body-grid">
         <PageHeader />
         <main>
           <div className="main-section">
