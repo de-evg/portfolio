@@ -19,9 +19,16 @@ input[type="radio"].visually-hidden {
   padding-right: 25px;
 }
 
-@media (min-width: 960px) {
+@media (min-width: $netBooksWidth) {
   .wrapper {    
     padding-left: 200px;
     padding-right: 200px;
+  }
+}
+
+@media (min-width: $minDesctopDeviceWidth) {
+  .wrapper {    
+    padding-left: 250px;
+    padding-right: 250px;
   }
 }

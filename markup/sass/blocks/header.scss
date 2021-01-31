@@ -9,7 +9,7 @@
 }
 
 .header--nav-show {
-  background-color: #000;
+  background-color: transparent;
 }
 
 .header--nav-show .header__title{
@@ -93,8 +93,14 @@
   }
 }
 
+@media (min-width: $netBooksWidth) {
+  .header__container {
+    width: $netBooksWidth;    
+  }
+}
+
 @media (min-width: $minDesctopDeviceWidth) {
   .header__container {
-    width: $minDesctopDeviceWidth;    
+    width: $minDestopContentWidth;    
   }
 }

@@ -9,14 +9,36 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
-  background-image: url("../img/developer-menu.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 101vw;
 
   display: flex;
   flex-direction: column;
+  animation: menu-show-animate 600ms ease-in;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100vw;
+    min-height: 100px;
+    bottom: 0;
+    background-image: url("../img/developer-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 101vw;
+  }
+}
+
+.main-menu__bg {
+  top: 0;
+  animation: animate-menu-bg 300ms ease-in;
+}
+
+@keyframes animate-menu-bg {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
 }
 
 .main-menu__item {

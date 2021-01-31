@@ -88,3 +88,98 @@
     }
   }
 }
+
+@media (min-width: $minDesctopDeviceWidth) {
+  .page-nav {
+    margin-top: 0px; 
+    width: 60px; 
+    height: 60px;
+
+    &::before,
+    &::after {
+      width: 60px;
+      height: 5px;
+      right: 0;
+    }
+
+    &::after {
+      top: 11px;
+    }
+  }
+
+  .page-nav--hidden {
+    height: 60px;
+    &::before {    
+      top: 0px;
+      right: 0px;
+      left: unset;
+      transform: rotate(0deg);
+      animation: burger-before-hide-animate 300ms ease-in;
+    }
+    &::after {
+      top: 11px;
+      right: 0px;
+      left: unset;
+      transform: rotate(0deg);
+      animation: burger-after-hide-animate 300ms ease-in;
+    }
+  }
+
+  .page-nav--show {
+    height: 47px;
+    &::before {   
+      top: 20px;   
+      transform: rotate(45deg);
+      animation: burger-before-show-animate 300ms ease-in;
+    }
+    &::after {
+      top: 20px;
+      transform: rotate(-45deg);
+      animation: burger-after-show-animate 300ms ease-in;
+    }
+  }
+}
+
+@keyframes burger-before-show-animate {
+  0% {
+    top: 0px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 20px;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes burger-after-show-animate {
+  0% {
+    top: 11px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 20px;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes burger-before-hide-animate {
+  0% {
+    top: 20px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    top: 0px;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes burger-after-hide-animate {
+  0% {
+    top: 20px;
+    transform: rotate(45deg);
+  }
+  100% {
+    top: 11px;
+    transform: rotate(0deg);
+  }
+}

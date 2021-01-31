@@ -1,25 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { ActionCreator } from "../../store/action";
-import "intersection-observer";
-import { useIsVisible } from "react-is-visible";
 import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
 
 const Contacts = ({ updateSectionName }) => {
   const nodeRef = useRef();
-  let isVisible = useIsVisible(nodeRef);
-  const [isShowed, setIsShowed] = useState(false);
-
-  useEffect(() => {
-    if (!isShowed) {
-      isVisible && setIsShowed(true);
-    }
-    if (isVisible) {
-      updateSectionName(`CONTACTS`);
-    }
-  }, [isShowed, isVisible, setIsShowed, updateSectionName]);
-
+  console.log(document.documentElement.clientWidth, Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  ));
   return (
     <>
       <div className="contacts" ref={nodeRef}>

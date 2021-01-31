@@ -7,9 +7,12 @@ import { isMobile } from "react-device-detect";
 import {ActionCreator} from "../../store/action";
 
 const PageHeader = ({ currentSection, changeMainMenuView }) => {
-  const [isShowed, setShowed] = useState(false);
+  const [isShowed, setShowed] = useState(null);
   const showClassToggle = isShowed ? "header--nav-show" : null;
-  const btnShowClassToggle = isShowed ? "page-nav--show" : null;
+  let btnShowClassToggle
+  if (isShowed !== null) {
+    btnShowClassToggle = isShowed ? "page-nav--show" : "page-nav--hidden";
+  }
   const handleClick = useCallback(() => {
     setShowed(!isShowed);
     changeMainMenuView();

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import AboutMe from "../about-me/about-me";
 import PageHeader from "../page-header/page-header";
@@ -13,11 +13,11 @@ import MainMenu from "../main-menu/main-menu";
 const PageMain = ({ isMenuOpen }) => {
   return (
     <>
-      <div className="body-grid">
+      <div className="body-grid" style={{overflow: isMenuOpen ? "hidden" : "unset"}}>
         <PageHeader />
         <main>
           <div className="main-section">
-            <Logo />
+            <Logo isMenuShowed={isMenuOpen} />
           </div>
 
           <div className="main-section">
