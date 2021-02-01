@@ -93,7 +93,7 @@
   .page-nav {
     margin-top: 0px; 
     width: 60px; 
-    height: 60px;
+    height: 47px;
 
     &::before,
     &::after {
@@ -108,7 +108,7 @@
   }
 
   .page-nav--hidden {
-    height: 60px;
+    height: 47px;
     &::before {    
       top: 0px;
       right: 0px;

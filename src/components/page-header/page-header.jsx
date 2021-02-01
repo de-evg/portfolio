@@ -17,9 +17,9 @@ const PageHeader = ({ currentSection, changeMainMenuView, top, left }) => {
     setShowed(!isShowed);
     changeMainMenuView();
   }, [setShowed, isShowed, changeMainMenuView]);
-
+  console.log(document.documentElement.clientWidth);
   return (
-    <header className={`header ${showClassToggle}`} style={{backgroundPositionY: isShowed ? `calc(${top}px + 160px)` : `unset`}}>
+    <header className={`header ${showClassToggle}`} style={{backgroundPositionY: isShowed ? `${top + 160}px` : `unset`}}>
       <div className="wrapper header__container">
         <h1 className="header__title page-title">Portfolio of Denis Minaev</h1>
         {!isMobile && (
