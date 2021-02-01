@@ -2,8 +2,9 @@ import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {NameSpace} from "../../store/reducers/root";
 
-const Logo = ({updateSectionName, isMenuShowed, changeLogoPosition}) => {
+const Logo = ({updateSectionName, isMenuShowed, changeLogoPosition, top}) => {
   const nodeRef = useRef();
 
   const svgStroke = isMenuShowed ? "#595959": "#1E1E1E";
@@ -13,12 +14,17 @@ const Logo = ({updateSectionName, isMenuShowed, changeLogoPosition}) => {
     const {top, left} = domRect;
     changeLogoPosition({top, left});
   })
+  const styleOnShowedMenu = {
+    zIndex: isMenuShowed ? 3 : "unset",
+    position: isMenuShowed ? "absolute" : "relative",
+    top: top
+  }
   return (
     <div className="logo--arrow-down logo">
-      <div className="logo__img" >
+      <div className="logo__img" style={isMenuShowed ? styleOnShowedMenu : null}>
         <svg
-          ref={nodeRef}
-          style={{zIndex: isMenuShowed ? 2 : "unset"}}
+          ref={nodeRef}     
+             
           width="1931"
           height="346"
           viewBox="0 0 414 76"
@@ -79,8 +85,13 @@ const Logo = ({updateSectionName, isMenuShowed, changeLogoPosition}) => {
 Logo.propTypes = {
   updateSectionName: PropTypes.func.isRequired,
   isMenuShowed: PropTypes.bool.isRequired,
-  changeLogoPosition: PropTypes.func.isRequired
+  changeLogoPosition: PropTypes.func.isRequired,
+  top: PropTypes.string.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  top: state[NameSpace.LOGO].top
+})
 
 const mapDispatchToProps = (dispatch) => ({
   updateSectionName(sectionName) {
@@ -91,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(Logo);
+export default connect(mapStateToProps, mapDispatchToProps)(Logo);

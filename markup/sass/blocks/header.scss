@@ -8,6 +8,8 @@
   &::before {
     position: absolute;
     content: "";
+    max-width: 100%;
+    width: 100vw;
     min-height: 86px;
     top: 0;
     background-color: #fff;
@@ -17,11 +19,12 @@
 
 .header--nav-show {
   background-color: transparent;
+  min-height: 100vh;
 
   &::before,
   &::after {
     max-width: 100%;
-    width: 100vw;
+    width: 100vw;    
   }
 }
 
@@ -119,6 +122,10 @@
   }
 
   .header--nav-show {
+    background-image: url("../img/developer-menu.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: 101vw;
     &::after {
       position: absolute;
       content: "";      
@@ -127,11 +134,6 @@
       background-color: #000;
       animation: nav-bg-animate 600ms ease-in;
       z-index: 1;
-
-      background-image: url("../img/developer-menu.svg");
-      background-repeat: no-repeat;
-      background-position-x: center;
-      background-size: 101vw;
       }
     }
 

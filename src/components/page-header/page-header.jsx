@@ -17,7 +17,7 @@ const PageHeader = ({ currentSection, changeMainMenuView, top, left }) => {
     setShowed(!isShowed);
     changeMainMenuView();
   }, [setShowed, isShowed, changeMainMenuView]);
-  console.log(document.documentElement.clientWidth);
+  
   return (
     <header className={`header ${showClassToggle}`} style={{backgroundPositionY: isShowed ? `${top + 160}px` : `unset`}}>
       <div className="wrapper header__container">
