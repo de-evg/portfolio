@@ -6,7 +6,7 @@ import { Section } from "../../const";
 import { isMobile } from "react-device-detect";
 import {ActionCreator} from "../../store/action";
 
-const PageHeader = ({ currentSection, changeMainMenuView, top, left }) => {
+const PageHeader = ({ currentSection, changeMainMenuView}) => {
   const [isShowed, setShowed] = useState(null);
   const showClassToggle = isShowed ? "header--nav-show" : "";
   let btnShowClassToggle
@@ -17,9 +17,9 @@ const PageHeader = ({ currentSection, changeMainMenuView, top, left }) => {
     setShowed(!isShowed);
     changeMainMenuView();
   }, [setShowed, isShowed, changeMainMenuView]);
-  
+  // style={{backgroundPositionY: isShowed ? `${top + 160}px` : `unset`}}
   return (
-    <header className={`header ${showClassToggle}`} style={{backgroundPositionY: isShowed ? `${top + 160}px` : `unset`}}>
+    <header className={`header ${showClassToggle}`} >
       <div className="wrapper header__container">
         <h1 className="header__title page-title">Portfolio of Denis Minaev</h1>
         {!isMobile && (
@@ -33,15 +33,11 @@ const PageHeader = ({ currentSection, changeMainMenuView, top, left }) => {
 
 PageHeader.propTypes = {
   currentSection: PropTypes.string.isRequired,
-  changeMainMenuView: PropTypes.func.isRequired,
-  top: PropTypes.string.isRequired,
-  left: PropTypes.string.isRequired
+  changeMainMenuView: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  currentSection: state[NameSpace.HEADER].currentSection,  
-  top: state[NameSpace.LOGO].top,
-  left: state[NameSpace.LOGO].left,
+  currentSection: state[NameSpace.HEADER].currentSection,    
 });
 
 const mapDispatchToProps = (dispatch) => ({

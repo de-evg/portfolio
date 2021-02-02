@@ -36,7 +36,8 @@
   .logo__img svg {
     position: relative;    
     left: -10px;
-    width: calc(100vw + 10px);  
+    width: calc(100vw + 10px);
+    opacity: 1;
   }
 
   .logo--arrow-down {
@@ -53,4 +54,12 @@
     }
   }
 
+  @keyframes first-show-animation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
