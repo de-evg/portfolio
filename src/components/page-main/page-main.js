@@ -8,7 +8,6 @@ import MainMenu from "../main-menu/main-menu";
 import SectionList from "../section-list/section-list";
 
 const PageMain = ({ isMenuOpen, currentSection }) => {
-
   return (
     <div className="body-grid">
       <PageHeader />
