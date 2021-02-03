@@ -1,29 +1,48 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
-import {isMobile} from "react-device-detect";
+import { connect } from "react-redux";
+import { ActionCreator } from "../../store/action";
+import { isMobile } from "react-device-detect";
 
-const AboutMe = ({updateSectionName}) => {
+const AboutMe = ({ changeCurrentSection }) => {
   const nodeRef = useRef();
+  const scrollY =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+
+  useEffect(() => {
+    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollPos = scrollY + window.innerHeight;
+    if (elementPos < scrollPos) {
+      changeCurrentSection(`ABOUT_ME`);
+    }
+    const handleScroll = (evt) => {
+      if (elementPos < scrollPos) {
+        changeCurrentSection(`ABOUT_ME`);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [changeCurrentSection, scrollY]);
+
   return (
-    <div className="about-me">
+    <div ref={nodeRef} className="about-me">
       <div className="wrapper">
-        {isMobile && (
-          <h2 className="main-section__title">About me</h2>
-        )}
-        <div className="about-me__container" ref={nodeRef}>
+        {isMobile && <h2 className="main-section__title">About me</h2>}
+        <div className="about-me__container">
           <p className="main-section__content about__content">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Perferendis esse quia, sapiente ea earum laboriosam excepturi
-            quidem dolorum accusantium voluptate minus? Facere perferendis
-            amet alias a, impedit eius ipsam voluptas.
+            Perferendis esse quia, sapiente ea earum laboriosam excepturi quidem
+            dolorum accusantium voluptate minus? Facere perferendis amet alias
+            a, impedit eius ipsam voluptas.
           </p>
           <p className="main-section__content about__content">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Perferendis esse quia, sapiente ea earum laboriosam excepturi
-            quidem dolorum accusantium voluptate minus? Facere perferendis
-            amet alias a, impedit eius ipsam voluptas.
+            Perferendis esse quia, sapiente ea earum laboriosam excepturi quidem
+            dolorum accusantium voluptate minus? Facere perferendis amet alias
+            a, impedit eius ipsam voluptas.
           </p>
         </div>
       </div>
@@ -32,11 +51,11 @@ const AboutMe = ({updateSectionName}) => {
 };
 
 AboutMe.propTypes = {
-  updateSectionName: PropTypes.func.isRequired,
+  changeCurrentSection: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSectionName(sectionName) {
+  changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
   },
 });

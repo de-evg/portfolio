@@ -1,13 +1,10 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ActionCreator } from "../../store/action";
 import { NameSpace } from "../../store/reducers/root";
 
 const SVG_FILL = "#1E1E1E";
-const animationCss = {
-  
-};
 
 const Logo = ({
   updateSectionName,
@@ -16,55 +13,56 @@ const Logo = ({
   changeLogoPositionLeft,
   top,
   left,
+  changeCurrentSection,
 }) => {
   const nodeRef = useRef();
-  const [isFirstShow, setShowStatus] = useState(true);
-  const handleScroll = useCallback(    
-    (evt) => {
-      const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(evt.wheelDelta);
-      console.log(scrollY);
-      if (scrollY) {
-        const domRect = nodeRef.current.getBoundingClientRect();
-        const newTop = domRect.top;
-        changeLogoPositionTop(newTop);
-      }
-
-      if (scrollY === 0 || scrollY === 1) {
-        const newLeft = -10;
-        changeLogoPositionLeft(newLeft);
-      }
-
-      if (evt.wheelDelta < 0 && scrollY !== 0 && scrollY !== 1) {
-        const newLeft = left - 3;
-        changeLogoPositionLeft(newLeft);
-      }
-
-      if (evt.wheelDelta > 0 && scrollY !== 0 && scrollY !== 1) {
-        const newLeft = left + 3;
-        changeLogoPositionLeft(newLeft);
-      }
-    },
-    [changeLogoPositionTop, changeLogoPositionLeft, left]
-  );
+  const [isShow, setShowStatus] = useState(false);
+  const scrollY =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
 
   useEffect(() => {
-    document.addEventListener("wheel", handleScroll);
-    return () => document.removeEventListener("wheel", handleScroll);
-  }, [handleScroll]);
+    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollPos = scrollY + window.innerHeight;
+    changeLogoPositionTop(elementPos);
 
-  useEffect(() => {
-    if (isFirstShow) {
-      setShowStatus(false);
+    if (elementPos < scrollPos) {
+      setShowStatus(true);
     }
-  }, [isFirstShow]);
+  }, [changeLogoPositionTop, scrollY]);
+
+  useEffect(() => {
+    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollPos = scrollY + window.innerHeight;
+    const handleScroll = (evt) => {
+      if (elementPos < scrollPos) {
+        setShowStatus(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollY]);
+
+  useEffect(() => {
+    const handleScroll = (evt) => {
+      const elementPos = nodeRef.current.getBoundingClientRect().top;
+      const scrollPos = scrollY + window.innerHeight;
+      if (elementPos < scrollPos) {
+        changeCurrentSection(`LOGO`);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [changeCurrentSection, scrollY]);
 
   return (
-    <div className="logo--arrow-down logo">
+    <div className="logo">
       <div className="logo__img">
         <svg
+          className={`logo__svg ${isShow ? "logo__svg--show" : ""}`}
           ref={nodeRef}
-          style={{ left: left, opacity: isFirstShow ? "0" : "1", animation: isFirstShow ? "first-show-animation 500ms earse-in" : "unset"}}
           width="1931"
           height="346"
           viewBox="0 0 414 76"
@@ -120,6 +118,7 @@ Logo.propTypes = {
   changeLogoPositionLeft: PropTypes.func.isRequired,
   top: PropTypes.number.isRequired,
   left: PropTypes.number.isRequired,
+  changeCurrentSection: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -136,6 +135,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeLogoPositionLeft(coord) {
     dispatch(ActionCreator.changeLogoPositionLeft(coord));
+  },
+  changeCurrentSection(sectionName) {
+    dispatch(ActionCreator.changeSection(sectionName));
   },
 });
 

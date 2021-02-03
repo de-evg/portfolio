@@ -5,3 +5,11 @@ export const Section = {
   WORKS: `Works`,
   CONTACTS: `Contacts`
 }
+
+export const NextSection = {
+  LOGO: `ABOUT_ME`,
+  ABOUT_ME: `SERVICES`,
+  SERVICES: `WORKS`,
+  WORKS: `CONTACTS`
+}
+

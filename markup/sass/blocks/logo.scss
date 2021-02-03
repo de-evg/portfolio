@@ -1,65 +1,59 @@
 .logo {
   min-height: 100px;
-  padding-top: 50vh;  
+  padding-top: 50vh;
 }
 
-.logo__img {  
+.logo__img {
   overflow: hidden;
 }
 
-.logo__img svg {
+.logo__svg {
   position: relative;
   left: -1px;
-  width: 100vw;  
+  width: 100vw;
+  opacity: 0;
+  transform: translateX(-100%);
 }
 
-.logo--arrow-down {
-  position: relative;  
-  &::after {
-    position: absolute;
-    content: '';
-    width: 12px;
-    height: 20px;
-    bottom: 53px;
-    left: 19px;
-    background-image: url("../../img/arrow-down.png");
-    background-repeat: no-repeat;
+.logo__svg--show {
+  transform: translateX(0);
+  opacity: 1;  
+  animation: first-show-animation 1500ms ease-in-out;
+}
+
+@keyframes first-show-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-10px);
   }
 }
 
 @media (min-width: $netBooksWidth) {
   .logo {
-    padding-top: 24vh;   
-    min-height: calc(100vh - 160px) ; 
+    padding-top: 24vh;
+    min-height: calc(100vh - 160px);
   }
 
-  .logo__img svg {
-    position: relative;    
+  .logo__svg {
+    position: relative;
     left: -10px;
-    width: calc(100vw + 10px);
-    opacity: 1;
   }
 
   .logo--arrow-down {
-    position: relative;  
+    position: relative;
     &::after {
       position: absolute;
-      content: '';
+      content: "";
       width: 15px;
       height: 20px;
       bottom: 0;
       left: 73px;
       background-image: url("../../img/arrow-down-desctop.png");
       background-repeat: no-repeat;
-    }
-  }
-
-  @keyframes first-show-animation {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 }

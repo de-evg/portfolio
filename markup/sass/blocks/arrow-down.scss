@@ -1,0 +1,16 @@
+.arrow-down {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  left: 30px;
+  bottom: 53px;
+
+  background-image: url("../../img/arrow-down.png");
+  background-repeat: no-repeat;
+}

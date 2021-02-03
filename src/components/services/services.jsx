@@ -1,12 +1,33 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect} from "react";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../store/action";
 
 import {connect} from "react-redux";
 import {isMobile} from "react-device-detect";
 
-const Services = ({updateSectionName}) => {
+const Services = ({changeCurrentSection}) => {
   const nodeRef = useRef();
+
+  const scrollY =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+
+  useEffect(() => {
+    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollPos = scrollY + window.innerHeight;
+    if (elementPos < scrollPos) {
+      changeCurrentSection(`SERVICES`);
+    }
+    const handleScroll = (evt) => {
+      if (elementPos < scrollPos) {
+        changeCurrentSection(`SERVICES`);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [changeCurrentSection, scrollY]);
 
   return (
     <div className="services" ref={nodeRef} style={{paddingBottom: "100px"}}>
@@ -35,11 +56,11 @@ const Services = ({updateSectionName}) => {
 };
 
 Services.propTypes = {
-  updateSectionName: PropTypes.func.isRequired,
+  changeCurrentSection: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSectionName(sectionName) {
+  changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
   },
 });
