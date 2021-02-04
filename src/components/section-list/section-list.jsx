@@ -10,15 +10,15 @@ import Works from "../works/wokrs";
 import { NameSpace } from "../../store/reducers/root";
 import ArrowDown from "../arrow-down/arrow-down";
 import { NextSection } from "../../const";
+import { Section } from "../../const";
 
 const SectionList = ({ isMenuOpen, currentSection }) => {
   const mapRef = {    
     ABOUT_ME: useRef(),
     SERVICES: useRef(),
     WORKS: useRef(),
-    CONTACATS: useRef(),
+    CONTACTS: useRef(),
   };
-  console.log(NextSection[currentSection || `LOGO`]);
   return (
     <>
       <div id={`LOGO`} className="main-section">
@@ -37,10 +37,10 @@ const SectionList = ({ isMenuOpen, currentSection }) => {
         <Works />
       </div>
 
-      <div ref={mapRef.CONTACATS} id={`CONTACATS`} className="main-section">
+      <div ref={mapRef.CONTACTS} id={`CONTACTS`} className="main-section">
         <Contacts />
       </div>
-      <ArrowDown section={mapRef[NextSection[currentSection || `LOGO`]]} />
+      {currentSection !== Section.CONTACTS.toUpperCase() && <ArrowDown section={mapRef[NextSection[currentSection || `LOGO`]]} />}
     </>
   );
 };

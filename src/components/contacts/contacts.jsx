@@ -4,13 +4,35 @@ import { ActionCreator } from "../../store/action";
 import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
 
-const Contacts = ({ updateSectionName }) => {
+const Contacts = ({ changeCurrentSection }) => {
   const nodeRef = useRef();
-  console.log(document.documentElement.clientWidth, Math.max(
-    document.body.scrollHeight, document.documentElement.scrollHeight,
-    document.body.offsetHeight, document.documentElement.offsetHeight,
-    document.body.clientHeight, document.documentElement.clientHeight
-  ));
+
+  useEffect(() => {
+    const scrollY =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    const elementPos = nodeRef.current.offsetTop;
+    const scrollPos = scrollY + window.innerHeight;
+    if (elementPos < scrollPos) {
+      changeCurrentSection(`CONTACTS`);
+    }
+    const handleScroll = (evt) => {
+      const scrollY =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      const elementPos = nodeRef.current.offsetTop + 500;
+      const scrollPos = scrollY + window.innerHeight;
+      if (elementPos < scrollPos) {
+        changeCurrentSection(`CONTACTS`);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [changeCurrentSection]);
+
   return (
     <>
       <div className="contacts" ref={nodeRef}>
@@ -36,11 +58,11 @@ const Contacts = ({ updateSectionName }) => {
 };
 
 Contacts.propTypes = {
-  updateSectionName: PropTypes.func.isRequired,
+  changeCurrentSection: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSectionName(sectionName) {
+  changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
   },
 });

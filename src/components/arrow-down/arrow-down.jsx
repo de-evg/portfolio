@@ -4,9 +4,10 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 const ArrowDown = ({ section, changeCurrentSection }) => {
+  console.log(section);
   const handleClick = useCallback(() => {
     window.scrollTo({
-      top: section.current.getBoundingClientRect().top,
+      top: section.current.offsetTop,
       behavior: "smooth",
     });
     changeCurrentSection(section.current.id);

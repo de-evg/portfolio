@@ -1,25 +1,30 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../store/action";
+import { ActionCreator } from "../../store/action";
 
-import {connect} from "react-redux";
-import {isMobile} from "react-device-detect";
+import { connect } from "react-redux";
+import { isMobile } from "react-device-detect";
 
-const Services = ({changeCurrentSection}) => {
+const Services = ({ changeCurrentSection }) => {
   const nodeRef = useRef();
 
-  const scrollY =
-    window.pageYOffset ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop;
-
   useEffect(() => {
-    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollY =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    const elementPos = nodeRef.current.offsetTop;
     const scrollPos = scrollY + window.innerHeight;
     if (elementPos < scrollPos) {
       changeCurrentSection(`SERVICES`);
     }
     const handleScroll = (evt) => {
+      const scrollY =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      const elementPos = nodeRef.current.offsetTop + 500;
+      const scrollPos = scrollY + window.innerHeight;
       if (elementPos < scrollPos) {
         changeCurrentSection(`SERVICES`);
       }
@@ -27,10 +32,10 @@ const Services = ({changeCurrentSection}) => {
 
     window.addEventListener("wheel", handleScroll);
     return () => window.removeEventListener("wheel", handleScroll);
-  }, [changeCurrentSection, scrollY]);
+  }, [changeCurrentSection]);
 
   return (
-    <div className="services" ref={nodeRef} style={{paddingBottom: "100px"}}>
+    <div className="services" ref={nodeRef} style={{ paddingBottom: "100px" }}>
       <div className="wrapper">
         {isMobile && <h2 className="main-section__title">Services</h2>}
         <div className="services__container">

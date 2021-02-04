@@ -57,8 +57,10 @@ html {
   height: 30px;
   border-radius: 50%;
   left: 30px;
-  bottom: 53px;
+  bottom: 0;
   background-image: url("../../img/arrow-down.png");
+  background-size: contain;
+  background-position-x: center;
   background-repeat: no-repeat; }
 
 .header {

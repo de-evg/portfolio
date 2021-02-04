@@ -16,38 +16,31 @@ const Logo = ({
   changeCurrentSection,
 }) => {
   const nodeRef = useRef();
+  const containerRef = useRef();
   const [isShow, setShowStatus] = useState(false);
-  const scrollY =
-    window.pageYOffset ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop;
 
   useEffect(() => {
-    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollY =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    const elementPos = containerRef.current.getBoundingClientRect().top;
     const scrollPos = scrollY + window.innerHeight;
     changeLogoPositionTop(elementPos);
 
     if (elementPos < scrollPos) {
       setShowStatus(true);
     }
-  }, [changeLogoPositionTop, scrollY]);
-
-  useEffect(() => {
-    const elementPos = nodeRef.current.getBoundingClientRect().top;
-    const scrollPos = scrollY + window.innerHeight;
-    const handleScroll = (evt) => {
-      if (elementPos < scrollPos) {
-        setShowStatus(true);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollY]);
+  }, [changeLogoPositionTop]);
 
   useEffect(() => {
     const handleScroll = (evt) => {
-      const elementPos = nodeRef.current.getBoundingClientRect().top;
-      const scrollPos = scrollY + window.innerHeight;
+      const scrollY =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      const elementPos = containerRef.current.offsetTop + 500;
+      const scrollPos = scrollY + window.innerHeight;      
       if (elementPos < scrollPos) {
         changeCurrentSection(`LOGO`);
       }
@@ -55,10 +48,10 @@ const Logo = ({
 
     window.addEventListener("wheel", handleScroll);
     return () => window.removeEventListener("wheel", handleScroll);
-  }, [changeCurrentSection, scrollY]);
+  }, [changeCurrentSection]);
 
   return (
-    <div className="logo">
+    <div ref={containerRef} className="logo">
       <div className="logo__img">
         <svg
           className={`logo__svg ${isShow ? "logo__svg--show" : ""}`}

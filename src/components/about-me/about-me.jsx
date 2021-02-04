@@ -6,18 +6,27 @@ import { isMobile } from "react-device-detect";
 
 const AboutMe = ({ changeCurrentSection }) => {
   const nodeRef = useRef();
-  const scrollY =
-    window.pageYOffset ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop;
 
   useEffect(() => {
-    const elementPos = nodeRef.current.getBoundingClientRect().top;
+    const scrollY =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    const elementPos = nodeRef.current.offsetTop;
     const scrollPos = scrollY + window.innerHeight;
+
     if (elementPos < scrollPos) {
       changeCurrentSection(`ABOUT_ME`);
     }
+
     const handleScroll = (evt) => {
+      const scrollY =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      const elementPos = nodeRef.current.offsetTop + 500;
+      const scrollPos = scrollY + window.innerHeight;
+
       if (elementPos < scrollPos) {
         changeCurrentSection(`ABOUT_ME`);
       }
@@ -25,7 +34,7 @@ const AboutMe = ({ changeCurrentSection }) => {
 
     window.addEventListener("wheel", handleScroll);
     return () => window.removeEventListener("wheel", handleScroll);
-  }, [changeCurrentSection, scrollY]);
+  }, [changeCurrentSection]);
 
   return (
     <div ref={nodeRef} className="about-me">

@@ -8,26 +8,32 @@ import { isMobile } from "react-device-detect";
 const Works = ({ changeCurrentSection }) => {
   const nodeRef = useRef();
 
-  const scrollY =
-  window.pageYOffset ||
-  document.documentElement.scrollTop ||
-  document.body.scrollTop;
-
-useEffect(() => {
-  const elementPos = nodeRef.current.getBoundingClientRect().top;
-  const scrollPos = scrollY + window.innerHeight;
-  if (elementPos < scrollPos) {
-    changeCurrentSection(`WORKS`);
-  }
-  const handleScroll = (evt) => {
+  useEffect(() => {
+    const scrollY =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    const elementPos = nodeRef.current.offsetTop;
+    const scrollPos = scrollY + window.innerHeight;
     if (elementPos < scrollPos) {
       changeCurrentSection(`WORKS`);
     }
-  };
 
-  window.addEventListener("wheel", handleScroll);
-  return () => window.removeEventListener("wheel", handleScroll);
-}, [changeCurrentSection, scrollY]);
+    const handleScroll = (evt) => {
+      const scrollY =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      const elementPos = nodeRef.current.offsetTop + 500;
+      const scrollPos = scrollY + window.innerHeight;
+      if (elementPos < scrollPos) {
+        changeCurrentSection(`WORKS`);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [changeCurrentSection]);
 
   return (
     <div className="works" ref={nodeRef} style={{ paddingBottom: "100px" }}>
