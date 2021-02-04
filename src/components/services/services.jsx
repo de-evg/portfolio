@@ -1,12 +1,22 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { ActionCreator } from "../../store/action";
 
 import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
+import Skill from "../skill/skill";
+import {Section} from "../../const";
+import {NameSpace} from "../../store/reducers/root";
 
-const Services = ({ changeCurrentSection }) => {
+const Services = ({ changeCurrentSection, currentSection }) => {
   const nodeRef = useRef();
+  const [isShow, setShowStatus] = useState(false);
+
+  useEffect(() => {
+    if (Section[currentSection] === Section.SERVICES) {
+      setShowStatus(true);      
+    }
+  }, [currentSection]);
 
   useEffect(() => {
     const scrollY =
@@ -15,9 +25,11 @@ const Services = ({ changeCurrentSection }) => {
       document.body.scrollTop;
     const elementPos = nodeRef.current.offsetTop;
     const scrollPos = scrollY + window.innerHeight;
+
     if (elementPos < scrollPos) {
       changeCurrentSection(`SERVICES`);
     }
+
     const handleScroll = (evt) => {
       const scrollY =
         window.pageYOffset ||
@@ -43,16 +55,16 @@ const Services = ({ changeCurrentSection }) => {
             services I CAN HELP YOU WITH
           </p>
           <ul className="services__skill-list">
-            <li className="services__skill-item">FRONTEND DEVELOPING.</li>
-            <li className="services__skill-item">HTML.</li>
-            <li className="services__skill-item">CSS.</li>
-            <li className="services__skill-item">SCSS.</li>
-            <li className="services__skill-item">LESS.</li>
-            <li className="services__skill-item">WEBPACK.</li>
-            <li className="services__skill-item">GULP.</li>
-            <li className="services__skill-item">JAVA SCRIPT.</li>
-            <li className="services__skill-item">REACT.</li>
-            <li className="services__skill-item">REDUX.</li>
+            <Skill in={isShow}>FRONTEND DEVELOPING.</Skill>
+            <Skill in={isShow}>HTML.</Skill>
+            <Skill in={isShow}>SCSS.</Skill>
+            <Skill in={isShow}>LESS.</Skill>
+            <Skill in={isShow}>WEBPACK.</Skill>
+            <Skill in={isShow}>CSS.</Skill>
+            <Skill in={isShow}>GULP.</Skill>
+            <Skill in={isShow}>JAVA SCRIPT.</Skill>
+            <Skill in={isShow}>REACT.</Skill>
+            <Skill in={isShow}>REDUX.</Skill>
           </ul>
         </div>
       </div>
@@ -62,7 +74,12 @@ const Services = ({ changeCurrentSection }) => {
 
 Services.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
+  currentSection: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  currentSection: state[NameSpace.HEADER].currentSection,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
@@ -70,4 +87,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Services);
+export default connect(mapStateToProps, mapDispatchToProps)(Services);

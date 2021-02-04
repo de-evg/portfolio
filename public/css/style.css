@@ -466,7 +466,8 @@ main {
     align-items: flex-end; }
   .about__content {
     font-size: 32px;
-    width: 593px; } }
+    width: 593px;
+    transform: translateX(50vw); } }
 
 .services__content {
   margin-bottom: 30px;

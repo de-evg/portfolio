@@ -1,11 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ActionCreator } from "../../store/action";
 import { isMobile } from "react-device-detect";
+import AboutMeContent from "../about-me-content/about-me-content";
+import { NameSpace } from "../../store/reducers/root";
+import { Section } from "../../const";
 
-const AboutMe = ({ changeCurrentSection }) => {
+const AboutMe = ({ changeCurrentSection, currentSection }) => {
   const nodeRef = useRef();
+  const [isShow, setShowStatus] = useState(false);
+
+  useEffect(() => {
+    if (Section[currentSection] === Section.ABOUT_ME) {
+      setShowStatus(true);      
+    }
+  }, [currentSection]);
 
   useEffect(() => {
     const scrollY =
@@ -17,6 +27,7 @@ const AboutMe = ({ changeCurrentSection }) => {
 
     if (elementPos < scrollPos) {
       changeCurrentSection(`ABOUT_ME`);
+      setShowStatus(true);
     }
 
     const handleScroll = (evt) => {
@@ -29,6 +40,7 @@ const AboutMe = ({ changeCurrentSection }) => {
 
       if (elementPos < scrollPos) {
         changeCurrentSection(`ABOUT_ME`);
+        setShowStatus(true);
       }
     };
 
@@ -41,18 +53,18 @@ const AboutMe = ({ changeCurrentSection }) => {
       <div className="wrapper">
         {isMobile && <h2 className="main-section__title">About me</h2>}
         <div className="about-me__container">
-          <p className="main-section__content about__content">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Perferendis esse quia, sapiente ea earum laboriosam excepturi quidem
-            dolorum accusantium voluptate minus? Facere perferendis amet alias
-            a, impedit eius ipsam voluptas.
-          </p>
-          <p className="main-section__content about__content">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Perferendis esse quia, sapiente ea earum laboriosam excepturi quidem
-            dolorum accusantium voluptate minus? Facere perferendis amet alias
-            a, impedit eius ipsam voluptas.
-          </p>
+          <AboutMeContent in={isShow}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad porro et
+            consectetur asperiores praesentium labore alias cum impedit atque,
+            totam esse delectus laboriosam, quas natus pariatur mollitia quidem
+            iure repellendus!
+          </AboutMeContent>
+          <AboutMeContent in={isShow}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad porro et
+            consectetur asperiores praesentium labore alias cum impedit atque,
+            totam esse delectus laboriosam, quas natus pariatur mollitia quidem
+            iure repellendus!
+          </AboutMeContent>
         </div>
       </div>
     </div>
@@ -61,7 +73,12 @@ const AboutMe = ({ changeCurrentSection }) => {
 
 AboutMe.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
+  currentSection: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  currentSection: state[NameSpace.HEADER].currentSection,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
@@ -69,4 +86,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(AboutMe);
+export default connect(mapStateToProps, mapDispatchToProps)(AboutMe);
