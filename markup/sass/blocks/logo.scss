@@ -12,7 +12,6 @@
   left: -1px;
   width: 101vw;
   opacity: 0;
-  transform: translateX(-100%);
 }
 
 .logo__svg--show {
@@ -24,11 +23,11 @@
 @keyframes first-show-animation {
   0% {
     opacity: 0;
-    transform: translateX(-100%);
+   
   }
   100% {
     opacity: 1;
-    transform: translateX(-10px);
+    
   }
 }
 

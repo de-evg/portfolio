@@ -7,13 +7,18 @@ import AboutMeContent from "../about-me-content/about-me-content";
 import { NameSpace } from "../../store/reducers/root";
 import { Section } from "../../const";
 
-const AboutMe = ({ changeCurrentSection, currentSection }) => {
+const AboutMe = ({ changeCurrentSection, currentSection, setOffset }) => {
   const nodeRef = useRef();
   const [isShow, setShowStatus] = useState(false);
 
   useEffect(() => {
+    const elementPos = nodeRef.current.offsetTop;
+    setOffset({ ABOUT_ME: elementPos });
+  }, [setOffset]);
+
+  useEffect(() => {
     if (Section[currentSection] === Section.ABOUT_ME) {
-      setShowStatus(true);      
+      setShowStatus(true);
     }
   }, [currentSection]);
 
@@ -44,8 +49,8 @@ const AboutMe = ({ changeCurrentSection, currentSection }) => {
       }
     };
 
-    window.addEventListener("wheel", handleScroll);
-    return () => window.removeEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [changeCurrentSection]);
 
   return (
@@ -74,6 +79,7 @@ const AboutMe = ({ changeCurrentSection, currentSection }) => {
 AboutMe.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
   currentSection: PropTypes.string.isRequired,
+  setOffset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -83,6 +89,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
+  },
+  setOffset(offset) {
+    dispatch(ActionCreator.setOffset(offset));
   },
 });
 

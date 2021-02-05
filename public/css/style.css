@@ -391,6 +391,8 @@ main {
   padding: 0; }
 
 @media (min-width: 1024px) {
+  .main-section {
+    min-height: calc(100vh - 160px); }
   .main-section__title {
     font-size: 25px;
     position: relative;
@@ -408,8 +410,7 @@ main {
   position: relative;
   left: -1px;
   width: 101vw;
-  opacity: 0;
-  transform: translateX(-100%); }
+  opacity: 0; }
 
 .logo__svg--show {
   transform: translateX(0);
@@ -418,11 +419,9 @@ main {
 
 @keyframes first-show-animation {
   0% {
-    opacity: 0;
-    transform: translateX(-100%); }
+    opacity: 0; }
   100% {
-    opacity: 1;
-    transform: translateX(-10px); } }
+    opacity: 1; } }
 
 @media (min-width: 1024px) {
   .logo {

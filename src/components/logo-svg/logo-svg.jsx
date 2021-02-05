@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
 
 const SVG_FILL = "#1E1E1E";
-const duration = 500;
-const transformDuration = 1000;
+const duration = 1000;
 const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out, transform ${transformDuration}ms ease-in-out`,
+  transition: `opacity ${duration}ms ease-in-out`,
   opacity: 0,
 };
 const transitionStyles = {
-  entering: { opacity: 0, transform: "translateX(-100%)" },
-  entered: { opacity: 1, transform: "translateX(0)" },
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
 };
 
 const LogoSvg = ({ in: inProp }) => {

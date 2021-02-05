@@ -7,18 +7,17 @@ import LogoSvg from "../logo-svg/logo-svg";
 
 
 const Logo = ({
-  updateSectionName,
-  isMenuShowed,
   changeLogoPositionTop,
-  changeLogoPositionLeft,
-  top,
-  left,
-  changeCurrentSection
+  changeCurrentSection,
+  setOffset
 }) => {
-  
-
   const containerRef = useRef();
   const [isShow, setShowStatus] = useState(false);
+
+  useEffect(() => {
+    const elementPos = containerRef.current.offsetTop
+    setOffset({LOGO: elementPos});
+  }, [setOffset])
 
   useEffect(() => {
     const scrollY =
@@ -68,6 +67,7 @@ Logo.propTypes = {
   top: PropTypes.number.isRequired,
   left: PropTypes.number.isRequired,
   changeCurrentSection: PropTypes.func.isRequired,
+  setOffset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -87,6 +87,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
+  },
+  setOffset(offset) {
+    dispatch(ActionCreator.setOffset(offset));
   },
 });
 

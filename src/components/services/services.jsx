@@ -5,16 +5,34 @@ import { ActionCreator } from "../../store/action";
 import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
 import Skill from "../skill/skill";
-import {Section} from "../../const";
-import {NameSpace} from "../../store/reducers/root";
+import { Section } from "../../const";
+import { NameSpace } from "../../store/reducers/root";
 
-const Services = ({ changeCurrentSection, currentSection }) => {
+const skills = [
+  `FRONTEND DEVELOPING.`,
+  `JAVA SCRIPT.`,
+  `REACT.`,
+  `REDUX.`,
+  `HTML5.`,
+  `CSS3.`,
+  `WEBPACK.`,
+  `SASS.`,
+  `LESS.`,
+  `GULP.`,
+];
+
+const Services = ({ changeCurrentSection, currentSection, setOffset }) => {
   const nodeRef = useRef();
   const [isShow, setShowStatus] = useState(false);
 
   useEffect(() => {
+    const elementPos = nodeRef.current.offsetTop - 50;
+    setOffset({ SERVICES: elementPos });
+  }, [setOffset]);
+
+  useEffect(() => {
     if (Section[currentSection] === Section.SERVICES) {
-      setShowStatus(true);      
+      setShowStatus(true);
     }
   }, [currentSection]);
 
@@ -42,8 +60,8 @@ const Services = ({ changeCurrentSection, currentSection }) => {
       }
     };
 
-    window.addEventListener("wheel", handleScroll);
-    return () => window.removeEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [changeCurrentSection]);
 
   return (
@@ -55,16 +73,11 @@ const Services = ({ changeCurrentSection, currentSection }) => {
             services I CAN HELP YOU WITH
           </p>
           <ul className="services__skill-list">
-            <Skill in={isShow}>FRONTEND DEVELOPING.</Skill>
-            <Skill in={isShow}>HTML.</Skill>
-            <Skill in={isShow}>SCSS.</Skill>
-            <Skill in={isShow}>LESS.</Skill>
-            <Skill in={isShow}>WEBPACK.</Skill>
-            <Skill in={isShow}>CSS.</Skill>
-            <Skill in={isShow}>GULP.</Skill>
-            <Skill in={isShow}>JAVA SCRIPT.</Skill>
-            <Skill in={isShow}>REACT.</Skill>
-            <Skill in={isShow}>REDUX.</Skill>
+            {skills.map((skill, i) => (
+              <Skill key={`skill-${i}`} k={i + 1} in={isShow}>
+                {skill}
+              </Skill>
+            ))}
           </ul>
         </div>
       </div>
@@ -75,6 +88,7 @@ const Services = ({ changeCurrentSection, currentSection }) => {
 Services.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
   currentSection: PropTypes.string.isRequired,
+  setOffset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -84,6 +98,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
+  },
+  setOffset(offset) {
+    dispatch(ActionCreator.setOffset(offset));
   },
 });
 

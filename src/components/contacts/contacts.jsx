@@ -4,8 +4,13 @@ import { ActionCreator } from "../../store/action";
 import { connect } from "react-redux";
 import { isMobile } from "react-device-detect";
 
-const Contacts = ({ changeCurrentSection }) => {
+const Contacts = ({ changeCurrentSection, setOffset }) => {
   const nodeRef = useRef();
+
+  useEffect(() => {
+    const elementPos = nodeRef.current.offsetTop;
+    setOffset({ CONTACTS: elementPos });
+  }, [setOffset]);
 
   useEffect(() => {
     const scrollY =
@@ -29,8 +34,8 @@ const Contacts = ({ changeCurrentSection }) => {
       }
     };
 
-    window.addEventListener("wheel", handleScroll);
-    return () => window.removeEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [changeCurrentSection]);
 
   return (
@@ -43,27 +48,22 @@ const Contacts = ({ changeCurrentSection }) => {
             D.E.MIN@YANDEX.RU
           </a>
         </div>
-      </div>
-      <footer className="page-footer">
-        <div className="wrapper page-footer__container">
-          <a className="page-footer__link-to-top" href="/">
-            {" "}
-            Back to top{" "}
-          </a>
-          <p className="page-footer__year">© 2021</p>
-        </div>
-      </footer>
+      </div>      
     </>
   );
 };
 
 Contacts.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
+  setOffset: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
+  },
+  setOffset(offset) {
+    dispatch(ActionCreator.setOffset(offset));
   },
 });
 

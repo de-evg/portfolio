@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { NameSpace } from "../../store/reducers/root";
 import MainMenu from "../main-menu/main-menu";
 import SectionList from "../section-list/section-list";
+import Footer from "../footer/footer";
 
 const PageMain = ({ isMenuOpen, currentSection }) => {
   return (
@@ -15,6 +16,7 @@ const PageMain = ({ isMenuOpen, currentSection }) => {
         <SectionList />
         <MainMenu isShowed={isMenuOpen} />        
       </main>
+      <Footer />
     </div>
   );
 };
