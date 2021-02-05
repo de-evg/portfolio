@@ -5,8 +5,13 @@ import { ActionCreator } from "../../store/action";
 import WorkList from "../work-list/work-list";
 import { isMobile } from "react-device-detect";
 
-const Works = ({ changeCurrentSection }) => {
+const Works = ({ changeCurrentSection, setOffset }) => {
   const nodeRef = useRef();
+
+  useEffect(() => {
+    const elementPos = nodeRef.current.offsetTop;
+    setOffset({ WORKS: elementPos });
+  }, [setOffset]);
 
   useEffect(() => {
     const scrollY =
@@ -31,8 +36,8 @@ const Works = ({ changeCurrentSection }) => {
       }
     };
 
-    window.addEventListener("wheel", handleScroll);
-    return () => window.removeEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [changeCurrentSection]);
 
   return (
@@ -49,11 +54,15 @@ const Works = ({ changeCurrentSection }) => {
 
 Works.propTypes = {
   changeCurrentSection: PropTypes.func.isRequired,
+  setOffset: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   changeCurrentSection(sectionName) {
     dispatch(ActionCreator.changeSection(sectionName));
+  },
+  setOffset(offset) {
+    dispatch(ActionCreator.setOffset(offset));
   },
 });
 

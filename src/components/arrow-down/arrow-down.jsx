@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-const ArrowDown = ({ section, changeCurrentSection }) => {
-  console.log(section);
+const ArrowDown = ({ section, changeCurrentSection }) => {  
   const handleClick = useCallback(() => {
     window.scrollTo({
       top: section.current.offsetTop,

@@ -2,7 +2,9 @@ const ActionType = {
   CHANGE_SECTION: `CHANGE_SECTION`,
   CHANGE_MAIN_MENU_VIEW: `CHANGE_MAIN_MENU_VIEW`,
   CHANGE_LOGO_POSITION_TOP: `CHANGE_LOGO_POSITION_TOP`,
-  CHANGE_LOGO_POSITION_LEFT: `CHANGE_LOGO_POSITION_LEFT`
+  CHANGE_LOGO_POSITION_LEFT: `CHANGE_LOGO_POSITION_LEFT`,
+  RESET_SECTION: `RESET_SECTION`,
+  SET_OFFSET: `SET_OFFSET`
 };
 
 const ActionCreator = {  
@@ -20,6 +22,13 @@ const ActionCreator = {
   changeLogoPositionLeft: (left) => ({
     type: ActionType.CHANGE_LOGO_POSITION_LEFT,
     payload: left
+  }),
+  resetSection: () => ({
+    type: ActionType.RESET_SECTION
+  }),
+  setOffset: (offset) => ({
+    type: ActionType.SET_OFFSET,
+    payload: offset
   })
 };
 

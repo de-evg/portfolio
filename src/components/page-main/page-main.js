@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header";
 
@@ -6,15 +6,17 @@ import { connect } from "react-redux";
 import { NameSpace } from "../../store/reducers/root";
 import MainMenu from "../main-menu/main-menu";
 import SectionList from "../section-list/section-list";
+import Footer from "../footer/footer";
 
-const PageMain = ({ isMenuOpen, currentSection }) => {
+const PageMain = ({ isMenuOpen }) => {
   return (
     <div className="body-grid">
       <PageHeader />
       <main>
         <SectionList />
-        <MainMenu isShowed={isMenuOpen} />        
+        <MainMenu isShowed={isMenuOpen} />
       </main>
+      <Footer />
     </div>
   );
 };
@@ -26,7 +28,6 @@ PageMain.propTypes = {
 
 const mapStateToProps = (state) => ({
   isMenuOpen: state[NameSpace.HEADER].isMenuOpen,
-  currentSection: state[NameSpace.HEADER].currentSection,
 });
 
 export default connect(mapStateToProps)(PageMain);
