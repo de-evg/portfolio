@@ -8,7 +8,7 @@ import MainMenu from "../main-menu/main-menu";
 import SectionList from "../section-list/section-list";
 import Footer from "../footer/footer";
 
-const PageMain = ({ isMenuOpen }) => {
+const Page = ({ isMenuOpen }) => {
   return (
     <div className="body-grid">
       <PageHeader />
@@ -21,7 +21,7 @@ const PageMain = ({ isMenuOpen }) => {
   );
 };
 
-PageMain.propTypes = {
+Page.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   currentSection: PropTypes.string.isRequired,
 };
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => ({
   isMenuOpen: state[NameSpace.HEADER].isMenuOpen,
 });
 
-export default connect(mapStateToProps)(PageMain);
+export default connect(mapStateToProps)(Page);

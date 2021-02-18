@@ -21,7 +21,7 @@ const SectionList = ({ isMenuOpen, currentSection }) => {
   };
   return (
     <>
-      <div id={`LOGO`} className="main-section">
+      <div id={`LOGO`} className="main-section parallax">
         <Logo isMenuShowed={isMenuOpen} />
       </div>
 
