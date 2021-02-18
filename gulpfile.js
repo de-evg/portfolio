@@ -17,7 +17,7 @@ gulp.task("clean", () => {
 
 gulp.task("copy", () => {
   return gulp.src("markup/css/normolize.css")
-  .pipe(gulp.dest("public/css"));
+  .pipe(gulp.dest("build/css"));
 });
 
 gulp.task("css", () => {
@@ -29,7 +29,7 @@ gulp.task("css", () => {
       autoprefixer()
     ]))
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("public/css"));
+    .pipe(gulp.dest("build/css"));
 });
 
 gulp.task("build", gulp.series(
@@ -40,7 +40,8 @@ gulp.task("build", gulp.series(
 
 gulp.task("server", () => {
   server.init({
-    server: "markup/",
+    port: 3000,
+    server: "build/",
     notify: false,
     open: true,
     cors: true,
