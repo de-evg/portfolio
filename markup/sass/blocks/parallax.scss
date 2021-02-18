@@ -1,0 +1,128 @@
+// Коэффициент масштабирования (scale): 1 + (translateZ * -1) / perspective
+
+.parallax {
+  font-size: 200%;
+  perspective: 300px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+
+}
+
+.parallax__layer--fore {
+  -webkit-transform: translateZ(90px) scale(.7);
+  transform: translateZ(90px) scale(.7);
+  z-index: 1;
+}
+
+.parallax__layer--base {
+  opacity: 0.7;
+  transform: translateZ(0);
+  z-index: 4;
+}
+
+.parallax__layer--back {
+  opacity: 0.3;
+  transform: translateZ(-300px) scale(2);
+  z-index: 3;
+}
+
+.parallax__layer--deep {
+  transform: translateZ(-600px) scale(3);
+  z-index: 2;
+}
+
+#group1 {
+  z-index: 5;
+}
+
+#group1 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group1 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+#group2 {
+  z-index: 3;
+}
+
+#group2 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group2 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+#group3 {
+  z-index: 4;
+}
+
+#group3 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group3 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+#group4 {
+  z-index: 2;
+}
+
+#group4 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group4 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+#group5 {
+  z-index: 3;
+}
+
+#group5 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group5 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+#group6 {
+  z-index: 5;
+}
+
+#group6 .parallax__layer--base {
+  background-color: rgb(153, 216, 101);
+}
+
+#group6 .parallax__layer--back {
+  background-color: rgb(210, 101, 101);
+}
+
+.parallax__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;  
+  text-align: center;
+}

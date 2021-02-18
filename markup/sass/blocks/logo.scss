@@ -33,7 +33,8 @@
 
 @media (min-width: $netBooksWidth) {
   .logo {
-    padding-top: 24vh;
+    padding: 0;
+    transform: translateY(40vh);
     min-height: calc(100vh - 160px);
   }
 
