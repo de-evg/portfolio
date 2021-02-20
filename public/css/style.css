@@ -1,3 +1,12 @@
+#myClip circle {
+  animation: changeStroke 15s infinite; }
+
+@keyframes changeStroke {
+  from {
+    stroke: "yellow"; }
+  to {
+    stroke: "white"; } }
+
 .visually-hidden:not(:focus):not(:active),
 input[type="checkbox"].visually-hidden,
 input[type="radio"].visually-hidden {
@@ -182,12 +191,13 @@ html {
   padding-top: 100px;
   position: fixed;
   top: 160px;
-  left: 0;
+  right: 0;
   width: 100vw;
   height: calc(100vh - 160px);
   background-image: url("../../img/developer-menu.svg");
   background-size: 101vw;
   background-repeat: no-repeat;
+  background-position-x: -10px;
   display: flex;
   justify-content: center;
   z-index: 3;
@@ -195,9 +205,11 @@ html {
 
 @keyframes menu-show-animate {
   0% {
-    top: -100%; }
+    opacity: 0; }
+  50% {
+    opacity: 0; }
   100% {
-    top: 160px; } }
+    opacity: 1; } }
 
 .main-menu__list {
   display: flex;

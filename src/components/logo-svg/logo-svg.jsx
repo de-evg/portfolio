@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
 
 const SVG_FILL = "#1E1E1E";
-const duration = 1000;
+const duration = 600;
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
   opacity: 0,

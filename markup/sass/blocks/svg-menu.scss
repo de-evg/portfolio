@@ -1,0 +1,14 @@
+#myClip circle{
+  animation: changeStroke 15s infinite;
+}
+  
+@keyframes changeStroke {
+  from {
+    fill: "black";
+  }
+  to {
+    fill: "rgba(0, 0, 0, 0";
+  }
+}
+
+

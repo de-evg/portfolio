@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header";
-
+import SVGMenu from "../svg-menu/svg-menu";
 import { connect } from "react-redux";
 import { NameSpace } from "../../store/reducers/root";
 import MainMenu from "../main-menu/main-menu";
@@ -10,14 +10,15 @@ import Footer from "../footer/footer";
 
 const PageMain = ({ isMenuOpen }) => {
   return (
-    <div className="body-grid">
-      <PageHeader />
-      <main>
-        <SectionList />
-        <MainMenu isShowed={isMenuOpen} />
-      </main>
-      <Footer />
-    </div>
+    <SVGMenu />
+    // <div className="body-grid">
+    //   <PageHeader />
+    //   <main>
+    //     <SectionList />
+    //     <MainMenu isShowed={isMenuOpen} />
+    //   </main>
+    //   <Footer />
+    // </div>
   );
 };
 
