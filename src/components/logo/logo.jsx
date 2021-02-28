@@ -5,25 +5,20 @@ import { ActionCreator } from "../../store/action";
 import { NameSpace } from "../../store/reducers/root";
 import LogoSvg from "../logo-svg/logo-svg";
 
-
-const Logo = ({
-  changeLogoPositionTop,
-  changeCurrentSection,
-  setOffset
-}) => {
+const Logo = ({ changeLogoPositionTop, changeCurrentSection, setOffset }) => {
   const containerRef = useRef();
   const [isShow, setShowStatus] = useState(false);
 
   useEffect(() => {
-    const elementPos = containerRef.current.offsetTop
-    setOffset({LOGO: elementPos});
-  }, [setOffset])
+    const elementPos = containerRef.current.offsetTop;
+    setOffset({ LOGO: elementPos });
+  }, [setOffset]);
 
+  const scrollY =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
   useEffect(() => {
-    const scrollY =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
     const elementPos = containerRef.current.getBoundingClientRect().top;
     const scrollPos = scrollY + window.innerHeight;
     changeLogoPositionTop(elementPos);
@@ -31,7 +26,7 @@ const Logo = ({
     if (elementPos < scrollPos) {
       setShowStatus(true);
     }
-  }, [changeLogoPositionTop]);
+  }, [changeLogoPositionTop, scrollY]);
 
   useEffect(() => {
     const handleScroll = (evt) => {
